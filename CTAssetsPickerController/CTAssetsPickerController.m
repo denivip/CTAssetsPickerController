@@ -58,8 +58,9 @@ NSString * const CTAssetsPickerSelectedAssetsChangedNotification = @"CTAssetsPic
         _selectedAssets     = [[NSMutableArray alloc] init];
         _showsCancelButton  = YES;
 
-        self.preferredContentSize = kPopoverContentSize;
-        
+        if ([self respondsToSelector:@selector(setPreferredContentSize:)]) {
+            self.preferredContentSize = kPopoverContentSize;
+        }
         [self addKeyValueObserver];
     }
     

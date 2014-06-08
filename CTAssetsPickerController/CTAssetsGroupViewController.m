@@ -65,7 +65,9 @@
 {
     if (self = [super initWithStyle:UITableViewStylePlain])
     {
-        self.preferredContentSize = kPopoverContentSize;
+        if ([self respondsToSelector:@selector(setPreferredContentSize:)]) {
+            self.preferredContentSize = kPopoverContentSize;
+        }
         [self addNotificationObserver];
     }
     

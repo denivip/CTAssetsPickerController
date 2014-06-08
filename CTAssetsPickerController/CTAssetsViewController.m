@@ -78,7 +78,9 @@ NSString * const CTAssetsSupplementaryViewIdentifier = @"CTAssetsSupplementaryVi
                 forSupplementaryViewOfKind:UICollectionElementKindSectionFooter
                        withReuseIdentifier:CTAssetsSupplementaryViewIdentifier];
         
-        self.preferredContentSize = kPopoverContentSize;
+        if ([self respondsToSelector:@selector(setPreferredContentSize:)]) {
+            self.preferredContentSize = kPopoverContentSize;
+        }
     }
     
     [self addNotificationObserver];
