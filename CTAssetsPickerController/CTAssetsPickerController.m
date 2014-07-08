@@ -341,7 +341,7 @@ NSString * const CTAssetsPickerSelectedAssetsChangedNotification = @"CTAssetsPic
     BOOL photoSelected = ([self.selectedAssets filteredArrayUsingPredicate:photoPredicate].count > 0);
     BOOL videoSelected = ([self.selectedAssets filteredArrayUsingPredicate:videoPredicate].count > 0);
     
-    NSString *format;
+    NSString *format = nil;
     
     if (photoSelected && videoSelected)
         format = NSLocalizedString(@"%ld Items Selected", nil);
@@ -351,6 +351,9 @@ NSString * const CTAssetsPickerSelectedAssetsChangedNotification = @"CTAssetsPic
     
     else if (videoSelected)
         format = (self.selectedAssets.count > 1) ? NSLocalizedString(@"%ld Videos Selected", nil) : NSLocalizedString(@"%ld Video Selected", nil);
+    
+    else
+        format = @"%ld";
     
     return [NSString stringWithFormat:format, (long)self.selectedAssets.count];
 }
